@@ -1,5 +1,5 @@
 {
-  "apps": [
+  "app": [
     {
       "name": "miniapp.ionantha.tech",
       "script": "bin/www",

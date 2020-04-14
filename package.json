@@ -1,9 +1,10 @@
 {
-  "name": "demo",
+  "name": "miniapp.ionantha.tech",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "pm2 start ./config/pm2.json",
+    "start": "pm2 start ./conf/pm2.json",
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
