@@ -1,9 +1,9 @@
 {
   "name": "demo",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "pm2 start ./config/pm2.json",
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
