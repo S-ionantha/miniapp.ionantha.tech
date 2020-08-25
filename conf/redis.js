@@ -1,6 +1,6 @@
 var config = {
   host: '127.0.0.1',
-  port: '5498',
+  port: process.env.NODE_ENV == 'production' ? 6379 : 5498,
   password: '',
   preFix: 'm'
 }
