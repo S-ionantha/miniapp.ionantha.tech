@@ -4,14 +4,13 @@
       "name": "miniapp.ionantha.tech",
       "script": "bin/www",
       "cwd": "./",
-      "watch": false,
-      "watch_delay": 10000,
+      "watch": ["*"],
       "ignore_watch": ["node_modules", "logs", "public"],
       "max_memory_restart": "1000M",
       "max_restarts": 15,
-      "log_date_format": "YYYY-MM-DD HH:mm:ssZ",
-      "out_file": "./logs/output.log",
-      "error_file": "./logs/error.log",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss",
+      "out_file": "logs/output.log",
+      "error_file": "logs/error.log",
       "env": {
         "NODE_ENV": "production",
         "HOST": "0.0.0.0"

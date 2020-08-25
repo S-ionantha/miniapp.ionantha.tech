@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "dev": "nodemon ./bin/www",
     "start": "pm2 start ./conf/pm2.json",
-    "dev": "nodemon ./bin/www"
+    "end": "pm2 delete msite",
+    "restart": "pm2 start msite"
   },
   "dependencies": {
     "axios": "^0.20.0",
