@@ -14,7 +14,7 @@ router.get("/file_upload", async (req, res) => {
   fs.writeFileSync(`./public/zhouhp/amr/${media_id}.amr`, data, 'binary')
   // amrToMp3(sourcePath[,outputPath])
   let error, back
-  amrToMp3(`./public/zhouhp/amr/${media_id}.amr`, [,`./public/zhouhp/mp3/${media_id}.mp3`])
+  amrToMp3(`./public/zhouhp/amr/${media_id}.amr`, [,`./public/zhouhp/mp3`])
     .then((a) => {
       back = a // ./src/mp3/test.mp3
     })
