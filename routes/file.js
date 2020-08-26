@@ -1,13 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var fs = require("fs");
-const {getToken} = require('../utils/wechat')
+const { download } = require('../models/download')
+const { getToken } = require('../utils/wechat')
 
 // 引入导入模块
 const multiparty = require('multiparty');
 // 上传文件
-router.get("/file_upload", async  (req, res) => {
-  const data = await getToken()
+router.get("/file_upload", async (req, res) => {
+  const { media_id } = req.query
+  const {data: access_token} = await getToken()
+  console.log(access_token)
+  const data = await download(access_token, media_id)
   console.log(data)
   res.send({ err: "上传失败！" });
   /* 生成multiparty对象，并配置上传目标路径 */
