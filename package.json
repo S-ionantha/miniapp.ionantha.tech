@@ -13,6 +13,7 @@
     "axios": "^0.20.0",
     "bluebird": "^3.7.2",
     "cookie-parser": "~1.4.4",
+    "crypto-js": "^4.0.0",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
@@ -23,6 +24,7 @@
     "morgan": "~1.9.1",
     "multiparty": "^4.2.2",
     "redis": "^3.0.2",
-    "sequelize": "^6.3.4"
+    "sequelize": "^6.3.4",
+    "ws": "^7.3.1"
   }
 }
