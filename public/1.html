@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>携手过“六一”，有“鄂”也有你</title>
+  <meta name="keyWords" content="" />
+  <meta name="description" content="" />
+  <script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
+  <script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js"></script>
+  <script>
+    function isdingding_20190304() {
+      var ua = navigator.userAgent.toLowerCase();
+      return ua.indexOf("dingtalk") >= 0;
+    }
+    if (isdingding_20190304()) {
+      dd.ready(function() {
+        dd.biz.navigation.setRight({
+          show: true, //控制按钮显示， true 显示， false 隐藏， 默认true
+          control: true, //是否控制点击事件，true 控制，false 不控制， 默认false
+          text: '', //控制显示文本，空字符串表示显示默认文本
+          onSuccess: function(result) {
+            //如果control为true，则onSuccess将在发生按钮点击事件被回调
+            dd.biz.util.share({
+              type: 0, //分享类型，0:全部组件 默认； 1:只能分享到钉钉；2:不能分享，只有刷新按钮
+              url: window.location.href, // 分享链接
+              content: '我刚参加了《这就是南极》系列线上南极科普课程抽奖活动，快来参与收获礼物吧。', // 分享简介
+              title: '携手过“六一”，有“鄂”也有你', // 分享标题
+              image: 'http://webapp.cctv.com/h5/serv_cbox/dazhuanpan/img/sharelogo.png', // 分享图片
+              onSuccess: function() {},
+              onFail: function(err) {}
+            })
+          },
+          onFail: function(err) {}
+        });
+      })
+    }
+  </script>
+</head>
+
+<body>
+
+  <div id="app">asadadjandnlaldkj a</div>
+  
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+  <meta charset=utf-8>
+  <meta http-equiv=X-UA-Compatible content="IE=edge">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>大转盘</title>
+  <meta name=keyWords content="">
+  <meta name=description content="">
+  <script>
+    var phoneScale = parseInt(window.screen.width) / 750;
+    if (/Android (d+.d+)/.test(navigator.userAgent)) {
+      if (parseFloat(RegExp.$1) > 2.3) {
+        document.write('<meta name="viewport" content="width=750, minimum-scale=' + phoneScale + ', maximum-scale=' +
+          phoneScale + ', target-densitydpi=device-dpi" />');
+      } else {
+        document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi" />');
+      }
+
+    } else {
+      document.write('<meta name="viewport" content="width=750,user-scalable=no, minimum-scale=' + phoneScale +
+        ', maximum-scale=' + phoneScale + '" />');
+    }
+  </script>
+  <script src=https://res2.wx.qq.com/open/js/jweixin-1.4.0.js> </script> <script>
+    var token = null;
+
+    function cboxGetUserStatus(userid, verifycode) {
+      if (userid) {
+        window.uid = userid;
+      } else {
+        window.location.href = 'login://';
+      }
+      // token = encodeURIComponent(verifycode);
+    };
+
+    function duibaGetCboxUserStatus(userid, verifycode) {}
+  </script>
+  <link href=/roulette/css/app.0c35b82d.css rel=preload as=style>
+  <link href=/roulette/js/app.fbe1e112.js rel=preload as=script>
+  <link href=/roulette/js/chunk-vendors.05ea3644.js rel=preload as=script>
+  <link href=/roulette/css/app.0c35b82d.css rel=stylesheet>
+</head>
+
+<body><noscript><strong>We're sorry but vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
+  <div id=app></div>
+  <script src=/roulette/js/chunk-vendors.05ea3644.js> </script> <script src=/roulette/js/app.fbe1e112.js> </script> </body> </html>
