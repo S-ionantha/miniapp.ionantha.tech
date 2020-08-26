@@ -17,7 +17,7 @@ router.post('/getSignature', async (req, res) => {
 
 router.get('/getAccessToken',  async (req, res) => {
   try {
-    let data = await getToken(url)
+    let data = await getToken()
     res.send(onSuccess(data))
   } catch (error) {
     console.log(error)
