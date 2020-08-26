@@ -12,7 +12,7 @@ const auth = {
 		const redirectUrl = `https://${process.env.DOMAIN}/api/snsapiUserInfo?backurl=${encodeURIComponent(backurl)}`
 		const state = '1'
 		const scope = 'snsapi_base'
-		return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUrl}&response_type=code&scope=${scope}&state=${state}#wechat_redirect`
+		return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUrl}&response_type=code&state=${state}#wechat_redirect`
 		//return client.getAuthorizeURL(redirectUrl, state, scope)
 	},
 	/**
