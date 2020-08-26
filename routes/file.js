@@ -9,7 +9,7 @@ const multiparty = require('multiparty');
 // 上传文件
 router.get("/file_upload", async (req, res) => {
   const { media_id } = req.query
-  const {data: access_token} = await getToken()
+  const { access_token} = await getToken()
   console.log(access_token)
   const data = await download(access_token, media_id)
   console.log(data)
