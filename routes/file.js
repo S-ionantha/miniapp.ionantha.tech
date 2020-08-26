@@ -15,13 +15,13 @@ router.get("/file_upload", async (req, res) => {
   // amrToMp3(sourcePath[,outputPath])
 
   amrToMp3([`./public/zhouhp/amr/${media_id}.amr`,`./public/zhouhp/mp3/${media_id}.mp3`])
-  // .then(function (data) {
-  //   console.log(data)  // ./src/mp3/test.mp3
-  //   //...业务代码
-  // })
-  // .catch(function (err) {
-  //   console.log(err)
-  // })
+  .then(function (data) {
+    console.log(data)  // ./src/mp3/test.mp3
+    //...业务代码
+  })
+  .catch(function (err) {
+    console.log(err)
+  })
   res.send(data);
 })
 
