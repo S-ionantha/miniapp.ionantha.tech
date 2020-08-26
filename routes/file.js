@@ -13,7 +13,7 @@ router.get("/file_upload", async (req, res) => {
   console.log(access_token)
   const data = await download(access_token, media_id)
   console.log(data)
-  res.send({ err: "上传失败！" });
+  res.send(data);
   /* 生成multiparty对象，并配置上传目标路径 */
   // let form = new multiparty.Form();
   // /* 设置编辑 */
