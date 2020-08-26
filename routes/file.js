@@ -14,7 +14,7 @@ router.get("/file_upload", async (req, res) => {
   fs.writeFileSync(`./public/zhouhp/amr/${media_id}.amr`, data, 'binary')
   // amrToMp3(sourcePath[,outputPath])
 
-  amrToMp3(`./public/zhouhp/amr/${media_id}.amr`)
+  amrToMp3([`./public/zhouhp/amr/${media_id}.amr`,`./public/zhouhp/mp3/${media_id}.mp3`])
   // .then(function (data) {
   //   console.log(data)  // ./src/mp3/test.mp3
   //   //...业务代码
