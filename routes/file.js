@@ -21,7 +21,7 @@ router.get("/file_upload", async (req, res) => {
     .catch((err) => {
       error = err
     })
-  res.send({ err, a });
+  res.send({ error, back});
 })
 
 
