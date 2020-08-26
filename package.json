@@ -9,6 +9,7 @@
     "restart": "pm2 start msite"
   },
   "dependencies": {
+    "amrToMp3": "^1.0.8",
     "axios": "^0.20.0",
     "bluebird": "^3.7.2",
     "cookie-parser": "~1.4.4",
@@ -17,7 +18,11 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jssha": "^3.1.2",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.0",
     "morgan": "~1.9.1",
-    "redis": "^3.0.2"
+    "multiparty": "^4.2.2",
+    "redis": "^3.0.2",
+    "sequelize": "^6.3.4"
   }
 }
