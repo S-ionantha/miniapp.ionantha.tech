@@ -44,6 +44,7 @@ const auth = {
 		}
 		return res
 	},
+
 	/**
 	 * 根据openid，获取用户信息。
 	 * @param {String} access_token 

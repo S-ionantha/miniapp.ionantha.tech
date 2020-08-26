@@ -28,6 +28,32 @@ const weChat = {
       console.error(error)   
     }
   },
+
+  // async getAccessToken (code) {
+	// 	let res = false
+	// 	try {
+	// 		let axiosRes = await axios.get('https://api.weixin.qq.com/cgi-bin/token', {
+	// 			params: {
+	// 				appid: appId,
+	// 				secret: appSecret,
+	// 				grant_type: 'client_credential'
+	// 			}
+	// 		})
+	// 		let { errcode, access_token, expires_in, openid} = axiosRes.data
+	// 		if(!errcode){
+	// 			res = {
+	// 				access_token,
+	// 				openid
+	// 			}		
+	// 		}else{
+	// 			console.error('获取access_token错误,errcode', errcode)		
+	// 		}
+	// 	} catch (error) {
+	// 		console.error('获取access_token错误', error)	
+	// 	}
+	// 	return res
+  // },
+  
   async getTicket (){
     try {
       let wxTicket = null;
