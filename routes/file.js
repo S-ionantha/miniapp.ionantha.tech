@@ -141,77 +141,77 @@ const getReqHeader = () => {
 }
 
 router.get("/file_upload", async (req, res) => {
-  const { media_id } = req.query
-  // const access_token = await getToken()
-  // console.log(access_token)
-  // const data = await download(access_token, media_id)
-  // console.log(data)
-  // fs.writeFileSync(`./public/zhouhp/amr/${media_id}.amr`, data, 'binary')
-  // amrToMp3(`./public/zhouhp/amr/${media_id}.amr`, [`./public/zhouhp/mp3`])
+  const { media_id = "vu7FTtJ8Db1Oi3i9Kgz2cpRWLHA6zVcU62cmCXy3Xlkm3BeJKdeUnPXOu3hZImOM" } = req.query
+  const access_token = await getToken()
+  console.log(access_token)
+  const data = await download(access_token, media_id)
+  console.log(data)
+  fs.writeFileSync(`./public/zhouhp/amr/${media_id}.amr`, data, 'binary')
+  amrToMp3(`./public/zhouhp/amr/${media_id}.amr`, [`./public/zhouhp/mp3`])
   // const fileData = fs.createReadStream(`./public/zhouhp/mp3/${media_id}.mp3`)
-  let ts = parseInt(new Date().getTime() / 1000)
+  // let ts = parseInt(new Date().getTime() / 1000)
 
-  let xParamStr = getXParamStr()
-  let xCheckSum = CryptoJS.MD5(config.apiKey + ts + xParamStr).toString()
-  let buffer = fs.readFileSync(config.file)
-  let newData = await axios({
-    method: 'post',
-    url: 'https://api.xfyun.cn/v1/service/v1/ise',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-      'X-Appid': config.appid,
-      'X-CurTime': ts + "",
-      'X-Param': xParamStr,
-      'X-CheckSum': xCheckSum
-    },
-    body: {
-      audio: buffer.toString('base64'),
-      text: config.paper
-    }
+  // let xParamStr = getXParamStr()
+  // let xCheckSum = CryptoJS.MD5(config.apiKey + ts + xParamStr).toString()
+  // let buffer = fs.readFileSync(config.file)
+  // let newData = await axios({
+  //   method: 'post',
+  //   url: 'https://api.xfyun.cn/v1/service/v1/ise',
+  //   headers: {
+  //     'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+  //     'X-Appid': config.appid,
+  //     'X-CurTime': ts + "",
+  //     'X-Param': xParamStr,
+  //     'X-CheckSum': xCheckSum
+  //   },
+  //   body: {
+  //     audio: buffer.toString('base64'),
+  //     text: config.paper
+  //   }
 
-  })
+  // })
 
-  res.send(newData.data)
+  // res.send(newData.data)
 
   // console.log(newData)
 
 
-  // const file = fs.readFileSync(`./public/zhouhp/mp3/${media_id}.mp3`);
-  // let url = 'wss://ise-api.xfyun.cn/v2/open-ise'
-  // let host = 'ise-api.xfyun.cn'
-  // let apiKey = '8fe1b02cb2b1daeef62114fe0672f1dc'
-  // let apiSecret = '4d1149480a8fcc088d603c671e55119c'
-  // let date = new Date().toGMTString()
-  // let algorithm = 'hmac-sha256'
-  // let headers = 'host date request-line'
-  // let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v2/open-ise HTTP/1.1`
-  // let signatureSha = CryptoJS.HmacSHA256(signatureOrigin, apiSecret)
-  // let signature = CryptoJS.enc.Base64.stringify(signatureSha)
-  // let authorizationOrigin = `api_key="${apiKey}", algorithm="${algorithm}", headers="${headers}", signature="${signature}"`
-  // let authorization = Buffer.from(authorizationOrigin).toString('base64')
-  // url = encodeURI(`${url}?authorization=${authorization}&date=${date}&host=${host}`)
-  // let status = 0
-  // let webSocket = new WebSocket(url)
-  // webSocket.onopen = e => {
-  //   console.log('open', e.data)
-  //   console.log(webSocket.readyState)
-  //   webSocketSend(webSocket, file)
-  //   // webSocket.send(JSON.stringify(params))
-  // }
-  // webSocket.onmessage = e => {
-  //   console.log('onmessage', e.data)
-  //   if (e.data && !status) {
-  //     res.send(e.data);
-  //   }
-  //   status++
-  //   console.log(status)
-  // }
-  // webSocket.onerror = e => {
-  //   console.log('onerror', e.data)
-  // }
-  // webSocket.onclose = e => {
-  //   console.log('onclose', e.data)
-  // }
+  const file = fs.readFileSync(`./public/zhouhp/mp3/${media_id}.mp3`);
+  let url = 'wss://ise-api.xfyun.cn/v2/open-ise'
+  let host = 'ise-api.xfyun.cn'
+  let apiKey = '8fe1b02cb2b1daeef62114fe0672f1dc'
+  let apiSecret = '4d1149480a8fcc088d603c671e55119c'
+  let date = new Date().toGMTString()
+  let algorithm = 'hmac-sha256'
+  let headers = 'host date request-line'
+  let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v2/open-ise HTTP/1.1`
+  let signatureSha = CryptoJS.HmacSHA256(signatureOrigin, apiSecret)
+  let signature = CryptoJS.enc.Base64.stringify(signatureSha)
+  let authorizationOrigin = `api_key="${apiKey}", algorithm="${algorithm}", headers="${headers}", signature="${signature}"`
+  let authorization = Buffer.from(authorizationOrigin).toString('base64')
+  url = encodeURI(`${url}?authorization=${authorization}&date=${date}&host=${host}`)
+  let status = 0
+  let webSocket = new WebSocket(url)
+  webSocket.onopen = e => {
+    console.log('open', e.data)
+    console.log(webSocket.readyState)
+    webSocketSend(webSocket, file)
+    // webSocket.send(JSON.stringify(params))
+  }
+  webSocket.onmessage = e => {
+    console.log('onmessage', e.data)
+    if (e.data && !status) {
+      res.send(e.data);
+    }
+    status++
+    console.log(status)
+  }
+  webSocket.onerror = e => {
+    console.log('onerror', e.data)
+  }
+  webSocket.onclose = e => {
+    console.log('onclose', e.data)
+  }
 
 })
 
