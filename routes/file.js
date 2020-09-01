@@ -7,9 +7,9 @@ const { download } = require('../models/download')
 const { getToken } = require('../utils/wechat')
 let amrToMp3 = require('amrToMp3')
 const CryptoJS = require('crypto-js')
-const Lame = require("node-lame").Lame;
+// const Lame = require("node-lame").Lame;
 // var lame = require('lame');
-var ffmpeg = require('fluent-ffmpeg');
+// var ffmpeg = require('fluent-ffmpeg');
 // var command = ffmpeg();
 
 
