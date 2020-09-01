@@ -16,15 +16,20 @@
     "crypto-js": "^4.0.0",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "fast-xml-parser": "^3.17.4",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jssha": "^3.1.2",
     "lodash": "^4.17.20",
-    "mongoose": "^5.10.0",
+    "mongoose": "^5.10.2",
     "morgan": "~1.9.1",
     "multiparty": "^4.2.2",
+    "node-lame": "^1.2.2",
     "redis": "^3.0.2",
     "sequelize": "^6.3.4",
-    "ws": "^7.3.1"
+    "ws": "^7.3.1",
+    "xml2json": "^0.12.0"
   }
 }
