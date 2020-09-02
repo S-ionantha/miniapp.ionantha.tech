@@ -1,0 +1,757 @@
+body,
+dd,
+dl,
+dt,
+figcaption,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+html,
+li,
+menu,
+nav,
+ol,
+p,
+ul,
+video {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400
+}
+
+.service-item-taste button {
+  cursor: pointer
+}
+
+.service-item-taste .taste-button {
+  width: 350px;
+  margin: 32px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #e8d4bd;
+  font-size: 26px;
+  background-color: #915d3b;
+  border: none
+}
+
+.service-item-taste .taste-button:before {
+  content: "\5F00\59CB\8BC6\522B"
+}
+
+.service-item-taste .active .taste-button {
+  background-color: #6b3e21
+}
+
+.service-item-taste .active .taste-button:before {
+  content: "\7ED3\675F\8BC6\522B"
+}
+
+.service-item-taste .taste-header .dialect-select {
+  margin-left: 20px;
+  height: 26px
+}
+
+.service-item-taste .taste-header .dialect {
+  margin-left: 20px;
+  height: 26px;
+  line-height: 26px;
+  display: none
+}
+
+.service-item-taste .taste-header a {
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  height: 26px;
+  width: 100px;
+  float: right;
+  text-align: center;
+  line-height: 26px
+}
+
+.service-item-taste .taste-content {
+  margin-top: 20px;
+  min-width: 160px;
+  text-align: center
+}
+
+.service-item-taste .start-taste .taste-content .time-box {
+  height: 0;
+  opacity: 0;
+  padding-bottom: 20px
+}
+
+.service-item-taste .start-taste .taste-content.active .time-box {
+  opacity: 1
+}
+
+.service-item-taste .start-taste {
+  padding-top: 300px;
+  display: flex;
+  flex-direction: column
+}
+
+.service-item-taste .start-taste.flex-display-1 {
+  display: flex
+}
+
+.service-item-taste .start-taste .start-taste-left {
+  width: 647px;
+  margin: 0 auto
+}
+
+.service-item-taste .start-taste-left textarea {
+  width: 647px;
+  height: 360px;
+  color: #553106;
+  font-size: 50px;
+  resize: none;
+  padding: 45px 100px;
+  line-height: 70px;
+  box-sizing: border-box;
+  border: none;
+  background: url(https://static.vr0101.com/images/topic/feihualing/game/border.png)
+}
+
+textarea:focus {
+  outline: none
+}
+
+.service-item-taste .start-taste .start-taste-right {
+  display: none
+}
+
+.result {
+  width: 220px;
+  margin: 0 auto;
+}
+
+.service-item-taste .start-taste .start-taste-right .taste-button {
+  margin-top: 0;
+  background-color: #6b3e21
+}
+
+.service-item-taste .start-taste .time-box {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center
+}
+
+.service-item-taste .start-taste .time-box .total-time {
+  margin-left: 20px
+}
+
+.service-item-taste .start-taste .time-box .start-taste-line {
+  display: inline-block;
+  margin-right: 20px
+}
+
+.service-item-taste .start-taste .time-box .start-taste-line hr {
+  background-color: #187cff;
+  width: 3px;
+  height: 10px;
+  margin: 0 5px;
+  display: inline-block;
+  border: none
+}
+
+.service-item-taste .start-taste .start-taste-right .start-taste-button {
+  display: flex;
+  margin-top: 70px
+}
+
+.service-item-taste .start-taste .start-taste-right .start-taste-button .service-item-taste .taste-button {
+  background-color: #915d3b
+}
+
+.service-item-taste .start-taste .output-box {
+  display: flex
+}
+
+.output-box .left {
+  padding-left: 20px
+}
+
+.output-box .left p {
+  color: #553106;
+  font-size: 36px;
+  line-height: 54px;
+  font-family: PingFang SC
+}
+
+.output-box .right {
+  margin-left: 30px;
+  flex: 1
+}
+
+.output-box .right p {
+  font-size: 36px;
+  color: #553106
+}
+
+.output-box .right .result .err {
+  color: #a1170c
+}
+
+.hr {
+  -webkit-animation: note .2s ease-in-out;
+  animation: note .2s ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate
+}
+
+.hr1 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s
+}
+
+.hr2 {
+  -webkit-animation-delay: -.9s;
+  animation-delay: -.9s
+}
+
+.hr3 {
+  -webkit-animation-delay: -.8s;
+  animation-delay: -.8s
+}
+
+.hr4 {
+  -webkit-animation-delay: -.7s;
+  animation-delay: -.7s
+}
+
+.hr5 {
+  -webkit-animation-delay: -.6s;
+  animation-delay: -.6s
+}
+
+.hr6 {
+  -webkit-animation-delay: -.5s;
+  animation-delay: -.5s
+}
+
+.hr7 {
+  -webkit-animation-delay: -.4s;
+  animation-delay: -.4s
+}
+
+.hr8 {
+  -webkit-animation-delay: -.3s;
+  animation-delay: -.3s
+}
+
+.hr9 {
+  -webkit-animation-delay: -.2s;
+  animation-delay: -.2s
+}
+
+.hr10 {
+  -webkit-animation-delay: -.1s;
+  animation-delay: -.1s
+}
+
+@-webkit-keyframes note {
+  0% {
+    transform: scaleY(1)
+  }
+  to {
+    transform: scaleY(4)
+  }
+}
+
+@keyframes note {
+  0% {
+    transform: scaleY(1)
+  }
+  to {
+    transform: scaleY(4)
+  }
+}
+
+.ready-button,
+.start-button {
+  margin: 0 auto;
+  height: 40px;
+  width: 160px;
+  font-size: 16px;
+  letter-spacing: 6px
+}
+
+.service-item .service-item-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 1px solid #000;
+  line-height: 48px
+}
+
+.service-item .service-item-title .doc {
+  font-weight: 400;
+  font-size: 14px
+}
+
+body,
+html {
+  margin: 0;
+  overflow: hidden
+}
+
+#app,
+body,
+html {
+  width: 100%;
+  height: 100%
+}
+
+#app {
+  position: relative;
+  background-image: url(https://static.vr0101.com/images/topic/feihualing/home/bg/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed
+}
+
+.left-tree {
+  top: 0;
+  left: 0;
+  width: 219px;
+  height: 307px;
+  z-index: 1
+}
+
+.left-tree,
+.right-tree {
+  position: absolute;
+  opacity: .7
+}
+
+.right-tree {
+  top: 144px;
+  right: 0;
+  width: 180px;
+  height: 311px
+}
+
+.bg-flower {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  z-index: 0
+}
+
+.bg-flower .bg-f1 {
+  width: 22px;
+  height: 22px;
+  transform: translate3d(-50px, 0, 0);
+  -webkit-animation: f1 4.8s linear 0s infinite;
+  animation: f1 4.8s linear 0s infinite
+}
+
+.bg-flower .bg-f2 {
+  width: 28px;
+  height: 14px;
+  transform: translate3d(-50px, -100px, 0);
+  -webkit-animation: f2 4.8s linear .6s infinite;
+  animation: f2 4.8s linear .6s infinite
+}
+
+.bg-flower .bg-f3 {
+  width: 28px;
+  height: 24px;
+  transform: translate3d(-50px, -20px, 0);
+  -webkit-animation: f3 4.8s linear 1.2s infinite;
+  animation: f3 4.8s linear 1.2s infinite
+}
+
+.bg-flower .bg-f4 {
+  width: 28px;
+  height: 24px;
+  transform: translate3d(-50px, 0, 0);
+  -webkit-animation: f4 4.8s linear 1.8s infinite;
+  animation: f4 4.8s linear 1.8s infinite
+}
+
+.bg-flower .bg-f5 {
+  width: 30px;
+  height: 30px;
+  transform: translate3d(-50px, -125px, 0);
+  -webkit-animation: f5 4.8s linear 2.4s infinite;
+  animation: f5 4.8s linear 2.4s infinite
+}
+
+.bg-flower .bg-f6 {
+  width: 22px;
+  height: 22px;
+  transform: translate3d(-50px, -240px, 0);
+  -webkit-animation: f6 4.8s linear 3s infinite;
+  animation: f6 4.8s linear 3s infinite
+}
+
+.bg-flower .bg-f7 {
+  width: 28px;
+  height: 14px;
+  transform: translate3d(-50px, -100px, 0);
+  -webkit-animation: f7 4.8s linear 3.6s infinite;
+  animation: f7 4.8s linear 3.6s infinite
+}
+
+.bg-flower .bg-f8 {
+  width: 28px;
+  height: 24px;
+  transform: translate3d(-50px, -200px, 0);
+  -webkit-animation: f8 4.8s linear 4.2s infinite;
+  animation: f8 4.8s linear 4.2s infinite
+}
+
+.bg-flower .bg-f9 {
+  width: 28px;
+  height: 24px;
+  transform: translate3d(-50px, -80px, 0);
+  -webkit-animation: f9 4.8s linear 4.8s infinite;
+  animation: f9 4.8s linear 4.8s infinite
+}
+
+.bg-flower .bg-f10 {
+  width: 30px;
+  height: 30px;
+  transform: translate3d(-50px, -200px, 0);
+  -webkit-animation: f0 4.8s linear 5.4s infinite;
+  animation: f0 4.8s linear 5.4s infinite
+}
+
+@-webkit-keyframes f1 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, 0, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(300px, 500px, 0) rotate(10deg)
+  }
+}
+
+@keyframes f1 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, 0, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(300px, 500px, 0) rotate(10deg)
+  }
+}
+
+@-webkit-keyframes f2 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -100px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(690px, 100px, 0) rotate(-10deg)
+  }
+}
+
+@keyframes f2 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -100px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(690px, 100px, 0) rotate(-10deg)
+  }
+}
+
+@-webkit-keyframes f3 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -20px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(570px, 500px, 0) rotate(10deg)
+  }
+}
+
+@keyframes f3 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -20px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(570px, 500px, 0) rotate(10deg)
+  }
+}
+
+@-webkit-keyframes f4 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, 0, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(600px, 300px, 0) rotate(5deg)
+  }
+}
+
+@keyframes f4 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, 0, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(600px, 300px, 0) rotate(5deg)
+  }
+}
+
+@-webkit-keyframes f5 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -125px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(460px, 200px, 0) rotate(3deg)
+  }
+}
+
+@keyframes f5 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -125px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(460px, 200px, 0) rotate(3deg)
+  }
+}
+
+@-webkit-keyframes f6 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -240px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(630px, -40px, 0) rotate(10deg)
+  }
+}
+
+@keyframes f6 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -240px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(630px, -40px, 0) rotate(10deg)
+  }
+}
+
+@-webkit-keyframes f7 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -100px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(770px, 330px, 0)
+  }
+}
+
+@keyframes f7 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -100px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(770px, 330px, 0)
+  }
+}
+
+@-webkit-keyframes f8 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -200px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(600px, -80px, 0)
+  }
+}
+
+@keyframes f8 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -200px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(600px, -80px, 0)
+  }
+}
+
+@-webkit-keyframes f9 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -80px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(670px, 260px, 0)
+  }
+}
+
+@keyframes f9 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -80px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(670px, 260px, 0)
+  }
+}
+
+@-webkit-keyframes f0 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -200px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(700px, 0, 0) rotate(-10deg)
+  }
+}
+
+@keyframes f0 {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50px, -200px, 0)
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(700px, 0, 0) rotate(-10deg)
+  }
+}
+
+.rule-bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  display: none
+}
+
+.rule,
+.rule-bg {
+  position: fixed;
+  z-index: 2
+}
+
+.rule {
+  top: 50%;
+  left: 50%;
+  width: 678px;
+  height: auto;
+  padding: 50px 70px 53px;
+  box-sizing: border-box;
+  text-align: left;
+  background-image: url(https://static.vr0101.com/images/topic/feihualing/home/reward/bg.png);
+  background-size: 100%;
+  transform: translate(-50%, -60%)
+}
+
+.rule .rule-title {
+  width: 351px;
+  height: 120px;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
+.rule .rule-info {
+  height: 750px;
+  overflow: auto
+}
+
+.rule .rule-info h6 {
+  font-size: 32px;
+  font-family: PingFang SC;
+  font-weight: 700;
+  color: #553106;
+  line-height: 48px;
+  margin: 53px 0 18px -16px
+}
+
+.rule .rule-info .rule-num {
+  margin-top: 20px
+}
+
+.rule .rule-info p {
+  font-size: 30px;
+  font-family: PingFang SC;
+  color: #553106;
+  line-height: 54px
+}
+
+.rule .rule-info p span {
+  color: #ae4e34;
+  font-size: 30px
+}
+
+.rule .rule-info li {
+  margin-top: 51px
+}
+
+.rule .rule-info .ps {
+  margin-top: 65px
+}
+
+.rule .rule-info .ps span {
+  font-size: 28px;
+  font-family: PingFang SC;
+  font-weight: 700;
+  color: #a1170c;
+  line-height: 44px
+}
+
+.rule .rule-close {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
+.info-title {
+  text-align: center;
+  padding: 19px 20px;
+  margin: 35px 0;
+  font-size: 34px;
+  font-weight: 700;
+  background-image: url(https://static.vr0101.com/images/topic/feihualing/prize1/line.png);
+  background-size: 100% 100%
+}
