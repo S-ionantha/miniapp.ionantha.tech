@@ -14,6 +14,19 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+const allowCrossDomain = function (req, res, next) {
+  // let { origin } = req.headers
+  try {
+    // setAllow(origin, res)
+    res.header('Access-Control-Allow-Origin', '*')
+  } catch (error) {
+    res.header('Access-Control-Allow-Origin', 'https://m.168trucker.com')
+  }
+  next()
+};
+
+app.use(allowCrossDomain);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
