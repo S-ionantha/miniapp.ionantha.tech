@@ -123,7 +123,7 @@ video {
   line-height: 70px;
   box-sizing: border-box;
   border: none;
-  background: url(https://static.vr0101.com/images/topic/feihualing/game/border.png)
+  background: url(/img/game/border.png)
 }
 
 textarea:focus {
@@ -320,7 +320,7 @@ html {
 
 #app {
   position: relative;
-  background-image: url(https://static.vr0101.com/images/topic/feihualing/home/bg/bg.png);
+  background-image: url(/img/home/bg/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed
@@ -677,7 +677,7 @@ html {
   padding: 50px 70px 53px;
   box-sizing: border-box;
   text-align: left;
-  background-image: url(https://static.vr0101.com/images/topic/feihualing/home/reward/bg.png);
+  background-image: url(/img/home/reward/bg.png);
   background-size: 100%;
   transform: translate(-50%, -60%)
 }
@@ -752,6 +752,6 @@ html {
   margin: 35px 0;
   font-size: 34px;
   font-weight: 700;
-  background-image: url(https://static.vr0101.com/images/topic/feihualing/prize1/line.png);
+  background-image: url(/img/prize1/line.png);
   background-size: 100% 100%
 }
