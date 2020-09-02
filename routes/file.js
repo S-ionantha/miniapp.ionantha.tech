@@ -13,7 +13,7 @@ var ffmpeg = require('fluent-ffmpeg');
 // var parseString = require('xml2js').parseString;
 const parser = require("fast-xml-parser");
 
-const webSocketSend = (webSocket, audioData) => {
+const webSocketSend = (webSocket, audioData, text) => {
   // audioData = new Float64Array(audioData.buffer)
   // audioData = fs.createReadStream(audioData);
   audioData = [...audioData]
@@ -39,7 +39,7 @@ const webSocketSend = (webSocket, audioData) => {
       auf: 'audio/L16;rate=16000',
       aus: 1,
       aue: 'raw',
-      text: '\uFEFF' + '今天天气怎么样'
+      text: '\uFEFF' + text
     },
     data: {
       status: 0,
@@ -146,7 +146,7 @@ const getReqHeader = () => {
 }
 
 router.get("/file_upload", async (req, res) => {
-  const { media_id = "jao4c-2p38r" } = req.query
+  const { media_id = "jao4c-2p38r", text = '今天天气怎么样' } = req.query
 
   const access_token = await getToken()
   const data = await download(access_token, media_id)
@@ -196,7 +196,7 @@ router.get("/file_upload", async (req, res) => {
         webSocket.onopen = e => {
           console.log('open', e.data)
           console.log(webSocket.readyState)
-          webSocketSend(webSocket, file)
+          webSocketSend(webSocket, file, text)
           // webSocket.send(JSON.stringify(params))
         }
         webSocket.onmessage = e => {
