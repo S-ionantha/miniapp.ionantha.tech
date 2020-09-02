@@ -7,14 +7,11 @@ const { download } = require('../models/download')
 const { getToken } = require('../utils/wechat')
 let amrToMp3 = require('amrToMp3')
 const CryptoJS = require('crypto-js')
-// const Lame = require("node-lame").Lame;
-// var lame = require('lame');
-// var ffmpeg = require('fluent-ffmpeg');
-// var command = ffmpeg();
+var ffmpeg = require('fluent-ffmpeg');
 
 
 // var parseString = require('xml2js').parseString;
-const fxp = require("fast-xml-parser");
+const parser = require("fast-xml-parser");
 
 const webSocketSend = (webSocket, audioData) => {
   // audioData = new Float64Array(audioData.buffer)
@@ -41,13 +38,13 @@ const webSocketSend = (webSocket, audioData) => {
       cmd: 'ssb',
       auf: 'audio/L16;rate=16000',
       aus: 1,
-      aue: 'lame',
+      aue: 'raw',
       text: '\uFEFF' + '今天天气怎么样'
     },
     data: {
       status: 0,
-      encoding: 'lame',
-      // data_type: 1,
+      encoding: 'raw',
+      data_type: 1,
       data: ''
     },
   }
@@ -69,11 +66,11 @@ const webSocketSend = (webSocket, audioData) => {
           business: {
             cmd: 'auw',
             aus: 4,
-            aue: 'lame'
+            aue: 'raw'
           },
           data: {
             status: 2,
-            encoding: 'lame',
+            encoding: 'raw',
             data_type: 1,
             data: '',
           },
@@ -93,13 +90,13 @@ const webSocketSend = (webSocket, audioData) => {
         business: {
           cmd: 'auw',
           aus: 2,
-          aue: 'lame'
+          aue: 'raw'
         },
         data: {
           status: 1,
-          encoding: 'lame',
+          encoding: 'raw',
           data_type: 1,
-          data: Buffer.from(audioData).toString('base64'),
+          data: Buffer.from(sendAudioData).toString('base64'),
         },
       })
     )
@@ -125,7 +122,7 @@ const config = {
 const getXParamStr = () => {
   let xParam = {
     // 音频编码
-    "aue": "raw",
+    "aue": "lame",
     // 结果级别
     "result_level": "simple",
     // 语种
@@ -149,14 +146,91 @@ const getReqHeader = () => {
 }
 
 router.get("/file_upload", async (req, res) => {
-  const { media_id = "vu7FTtJ8Db1Oi3i9Kgz2cpRWLHA6zVcU62cmCXy3Xlkm3BeJKdeUnPXOu3hZImOM" } = req.query
+  const { media_id = "jao4c-2p38r" } = req.query
+
   const access_token = await getToken()
-  console.log(access_token)
   const data = await download(access_token, media_id)
-  console.log(data)
   fs.writeFileSync(`./public/zhouhp/amr/${media_id}.amr`, data, 'binary')
-  await amrToMp3(`./public/zhouhp/amr/${media_id}.amr`, [`./public/zhouhp/mp3`])
-  
+
+  amrToMp3(`./public/zhouhp/amr/${media_id}.amr`, [`./public/zhouhp/mp3`]).then((mp3) => {
+    console.log(mp3)
+    const command = ffmpeg(`./public/zhouhp/mp3/${media_id}.mp3`)
+      .outputOptions(
+        [
+          "-acodec pcm_s16le",
+          "-ac 1",
+          "-ar 16000"
+        ])
+      .save(`./public/zhouhp/wav/${media_id}.wav`)
+      .on('start', e => {
+        console.log('start', e)
+      })
+      .on('progress', (progress) => {
+        console.log('Processing: ' + progress.percent + '% done');
+      })
+      .on('error', (err, stdout, stderr) => {
+        console.log('Cannot process video: ' + err.message);
+        res.send({ data: 'error' });
+      })
+      .on('end', (stdout, stderr) => {
+        console.log('Transcoding succeeded !');
+        const file = fs.readFileSync(`./public/zhouhp/wav/${media_id}.wav`);
+
+        let url = 'wss://ise-api.xfyun.cn/v2/open-ise'
+        let host = 'ise-api.xfyun.cn'
+        let apiKey = '8fe1b02cb2b1daeef62114fe0672f1dc'
+        let apiSecret = '4d1149480a8fcc088d603c671e55119c'
+        let date = new Date().toGMTString()
+        let algorithm = 'hmac-sha256'
+        let headers = 'host date request-line'
+        let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v2/open-ise HTTP/1.1`
+        let signatureSha = CryptoJS.HmacSHA256(signatureOrigin, apiSecret)
+        let signature = CryptoJS.enc.Base64.stringify(signatureSha)
+        let authorizationOrigin = `api_key="${apiKey}", algorithm="${algorithm}", headers="${headers}", signature="${signature}"`
+        let authorization = Buffer.from(authorizationOrigin).toString('base64')
+        url = encodeURI(`${url}?authorization=${authorization}&date=${date}&host=${host}`)
+
+        let status = 0
+        let webSocket = new WebSocket(url)
+        let backData
+        webSocket.onopen = e => {
+          console.log('open', e.data)
+          console.log(webSocket.readyState)
+          webSocketSend(webSocket, file)
+          // webSocket.send(JSON.stringify(params))
+        }
+        webSocket.onmessage = e => {
+          console.log('onmessage', e.data)
+          console.log(typeof e.data)
+          let message = JSON.parse(e.data)
+          if (message.data.data) {
+            status = 1
+            backData = new Buffer(message.data.data, 'base64').toString()
+            // backData = fxp.parse(backData)
+            backData = parser.parse(backData, {
+              attributeNamePrefix: '',
+              ignoreAttributes: false
+            })
+            res.send(backData);
+          }
+        }
+        webSocket.onerror = e => {
+          console.log('onerror', e.data)
+        }
+        webSocket.onclose = e => {
+          if (!status) {
+            res.send({ data: 'error' });
+          }
+          console.log('onclose', e.data)
+        }
+      })
+
+  })
+    .catch(function (err) {
+      console.log(err)
+      res.send({ data: 'error' });
+    })
+
   // const fileData = fs.createReadStream(`./public/zhouhp/mp3/${media_id}.mp3`)
   // let ts = parseInt(new Date().getTime() / 1000)
 
@@ -184,8 +258,11 @@ router.get("/file_upload", async (req, res) => {
 
   // console.log(newData)
 
-  const file = fs.readFileSync(`./public/zhouhp/mp3/${media_id}.mp3`);
 
+
+
+
+  // console.log(file)
   // const encoder = new Lame({
   //   "output": "../public/zhouhp/mp3/demo.mp3",
   //   "bitrate": 192,
@@ -203,46 +280,9 @@ router.get("/file_upload", async (req, res) => {
   //     // Something went wrong
   //   });
 
-  let url = 'wss://ise-api.xfyun.cn/v2/open-ise'
-  let host = 'ise-api.xfyun.cn'
-  let apiKey = '8fe1b02cb2b1daeef62114fe0672f1dc'
-  let apiSecret = '4d1149480a8fcc088d603c671e55119c'
-  let date = new Date().toGMTString()
-  let algorithm = 'hmac-sha256'
-  let headers = 'host date request-line'
-  let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v2/open-ise HTTP/1.1`
-  let signatureSha = CryptoJS.HmacSHA256(signatureOrigin, apiSecret)
-  let signature = CryptoJS.enc.Base64.stringify(signatureSha)
-  let authorizationOrigin = `api_key="${apiKey}", algorithm="${algorithm}", headers="${headers}", signature="${signature}"`
-  let authorization = Buffer.from(authorizationOrigin).toString('base64')
-  url = encodeURI(`${url}?authorization=${authorization}&date=${date}&host=${host}`)
-  let status = 0
-  let webSocket = new WebSocket(url)
-  let backData
 
-  webSocket.onopen = e => {
-    console.log('open', e.data)
-    console.log(webSocket.readyState)
-    webSocketSend(webSocket, file)
-    // webSocket.send(JSON.stringify(params))
-  }
-  webSocket.onmessage = e => {
-    console.log('onmessage', e.data)
-    console.log(typeof e.data)
-    let message = JSON.parse(e.data)
-    if(message.data.data) {
-      backData = new Buffer(message.data.data, 'base64').toString()
-      backData = fxp.parse(backData)
-      res.send(backData);
-    }
-  }
-  webSocket.onerror = e => {
-    console.log('onerror', e.data)
-  }
-  webSocket.onclose = e => {
-    
-    console.log('onclose', e.data)
-  }
+
+
 
 })
 
