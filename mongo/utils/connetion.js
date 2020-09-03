@@ -10,17 +10,7 @@
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const Mongoose = require('mongoose')
-let mssqlConfig = require('../config/mssql')
 const mongoConfig = require('../config/mongo')
-const mongoCmsConfig = require('../config/mongo_cms')
-const mongoDetailConfig = require('../config/mongo_detail')
-const mongoTopicConfig = require('../config/mongo_topic')
-const mongoWeiChaiConfig = require('../config/mongo_weichai')
-const mariadbConfig = require('../config/mariadb')
-const mariadbTopicConfig = require('../config/mariadb_topic')
-const mariadbDealerConfig = require('../config/mariadb_dealer')
-const mariadbCMSConfig = require('../config/mariadb_cms')
-const mariadbMallConfig = require('../config/mariadb_mall')
 const env = 'dev'
 
 Mongoose.set('useCreateIndex', true)

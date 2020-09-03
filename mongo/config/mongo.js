@@ -1,6 +1,4 @@
 const config = {
-  ip: '172.17.62.115', // 内网
-  server: '39.107.92.154', // 公网
   host: process.env.NODE_ENV == 'production' ? 'localhost' : '47.100.12.188',
   port: process.env.NODE_ENV == 'production' ? '27017' : '27017',
   username: 'miniapp',
