@@ -325,8 +325,8 @@ var nativeShare = function (elementNode, config) {
     switch (to_app) {
       case 'sinaWeibo': {
         http =
-          '//service.weibo.com/share/share.php?url=' +
-          encodeURIComponent(document.location.protocol + '//' + window.config.url.split('//')[1]) +
+          'https://v.t.sina.com.cn/share/share.php?url=' +
+          encodeURIComponent(window.config.url) +
           '&appkey=2078561600&title=' +
           window.config.title +
           '&pic=' +
