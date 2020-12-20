@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Assembly</title>
+</head>
+<body>
+    <script src="./callc.js"></script>
+    <script>
+        window.onload = () => {
+            var result = Module.ccall(
+                'cPow', // C函数名
+                'number', // 返回值类型
+                ['number'], // 各参数类型
+                [10], // 各参数值
+            );
+            console.log(`返回值 result = ${result}`);
+        }
+    </script>
+</body>
+</html>
