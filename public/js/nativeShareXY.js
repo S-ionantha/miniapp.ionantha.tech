@@ -325,7 +325,7 @@ var nativeShare = function (elementNode, config) {
     switch (to_app) {
       case 'sinaWeibo': {
         http =
-          'http://v.t.sina.com.cn/share/share.php?url=' +
+          '//service.weibo.com/share/share.php?url=' +
           encodeURIComponent(document.location.protocol + '//' + window.config.url.split('//')[1]) +
           '&appkey=2078561600&title=' +
           window.config.title +
@@ -351,12 +351,12 @@ var nativeShare = function (elementNode, config) {
       case 'QZone': {
         var aa = new Date().getTime()
         http =
-          'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?pics=' +
+          'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?pics=' +
           window.config.img +
           '&summary=' +
           window.config.desc +
           '&url=' +
-          encodeURIComponent(document.location.protocol + '//' + window.config.url.split('//')[1]) +
+          encodeURIComponent(window.config.url) +
           '?' +
           aa +
           '&title=' +
