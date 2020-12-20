@@ -425,7 +425,7 @@ var nativeShare = function (elementNode, config) {
       }
     }
     this.html()
-    this.isloadqqApi()
+    // this.isloadqqApi()
     //控制各设备下显示图标
     if (isWeixin) {
       $('.nativeShare').parent('li').hide()
