@@ -93,8 +93,8 @@ var nativeShare = function (elementNode, config) {
     return false
   }
   var qApiSrc = {
-    lower: 'http://3gimg.qq.com/html5/js/qb.js',
-    higher: 'http://jsapi.qq.com/get?api=app.share',
+    lower: 'https://3gimg.qq.com/html5/js/qb.js',
+    higher: 'https://jsapi.qq.com/get?api=app.share',
   }
   var bLevel = {
     qq: { forbid: 0, lower: 1, higher: 2 },
@@ -224,13 +224,9 @@ var nativeShare = function (elementNode, config) {
           if (window.browser) {
             window.browser.app && window.browser.app.share(ah)
           } else {
-            alert('no API')
-            alert(window.browser)
-            alert('no API')
           }
         }
       } else {
-        alert('no UA')
       }
     }
   }
@@ -329,7 +325,7 @@ var nativeShare = function (elementNode, config) {
     switch (to_app) {
       case 'sinaWeibo': {
         http =
-          'http://v.t.sina.com.cn/share/share.php?url=' +
+          'https://v.t.sina.com.cn/share/share.php?url=' +
           encodeURIComponent(window.config.url) +
           '&appkey=2078561600&title=' +
           window.config.title +
@@ -341,7 +337,7 @@ var nativeShare = function (elementNode, config) {
       }
       case 'tx_weibo': {
         http =
-          'http://v.t.qq.com/share/share.php?pic=' +
+          'https://v.t.qq.com/share/share.php?pic=' +
           window.config.img +
           '&content=' +
           thwindow.configis.desc +
@@ -355,7 +351,7 @@ var nativeShare = function (elementNode, config) {
       case 'QZone': {
         var aa = new Date().getTime()
         http =
-          'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?pics=' +
+          'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?pics=' +
           window.config.img +
           '&summary=' +
           window.config.desc +
@@ -425,7 +421,7 @@ var nativeShare = function (elementNode, config) {
       }
     }
     this.html()
-    // this.isloadqqApi()
+    this.isloadqqApi()
     //控制各设备下显示图标
     if (isWeixin) {
       $('.nativeShare').parent('li').hide()
