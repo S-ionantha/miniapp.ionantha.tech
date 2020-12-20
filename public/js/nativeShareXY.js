@@ -326,7 +326,7 @@ var nativeShare = function (elementNode, config) {
       case 'sinaWeibo': {
         http =
           'https://v.t.sina.com.cn/share/share.php?url=' +
-          window.config.url +
+          encodeURIComponent(document.location.protocol + '//' + window.config.url.split('//')[1]) +
           '&appkey=2078561600&title=' +
           window.config.title +
           '&pic=' +
@@ -340,9 +340,9 @@ var nativeShare = function (elementNode, config) {
           'https://v.t.qq.com/share/share.php?pic=' +
           window.config.img +
           '&content=' +
-          thwindow.configis.desc +
+          window.configis.desc +
           '&url=' +
-          window.config.url +
+          encodeURIComponent(window.config.url) +
           '&title=' +
           window.config.title
         return http
@@ -356,7 +356,7 @@ var nativeShare = function (elementNode, config) {
           '&summary=' +
           window.config.desc +
           '&url=' +
-          encodeURIComponent(window.config.url) +
+          encodeURIComponent(document.location.protocol + '//' + window.config.url.split('//')[1]) +
           '?' +
           aa +
           '&title=' +
