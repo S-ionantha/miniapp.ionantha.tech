@@ -35,6 +35,7 @@ window.weixinSucess = function (data) {
   })
 
   window.wx.ready(function () {
+    alert('ready2')
     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
     wx.updateTimelineShareData({
       title: window.config.title, // 分享标题
