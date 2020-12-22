@@ -22,7 +22,7 @@ function getAjax(url, data, cb, spacial) {
 window.weixinSucess = function (data) {
   console.log('weixinSucess')
   if(!window.wx) {
-    window.wx = {}
+    // window.wx = {}
     return
   }
   window.wx.config({
@@ -35,7 +35,6 @@ window.weixinSucess = function (data) {
   })
 
   window.wx.ready(function () {
-    alert('ready2')
     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
     wx.updateTimelineShareData({
       title: window.config.title, // 分享标题
@@ -83,14 +82,6 @@ getAjax(
 )
 
 window.wx.ready(function () {
-  alert('ready')
-  // alert(window.shareObj.title)
-  // alert(window.config)
-  // alert(window.config.title)
-  // var shareInfo = window.shareObj
-  // alert(window.shareInfo)
-  // alert(window.shareInfo.title)
-
   // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
   wx.updateTimelineShareData({
     title: window.config.title, // 分享标题
