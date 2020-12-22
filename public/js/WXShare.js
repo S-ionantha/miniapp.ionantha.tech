@@ -58,7 +58,7 @@ getAjax(
   {
     appid: 'newstiket',
     serviceId: 'cmsty',
-    url: encodeURIComponent(encodeURIComponent(window.location.href)),
+    url: encodeURIComponent(encodeURIComponent(window.location.href.split('#')[0])),
   },
   window.weixinSucess
 )
