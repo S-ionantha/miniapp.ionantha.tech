@@ -22,6 +22,7 @@ function getAjax(url, data, cb, spacial) {
 window.weixinSucess = function (data) {
   console.log('weixinSucess')
   if(!window.wx) {
+    window.wx = {}
     return
   }
   window.wx.config({
@@ -62,6 +63,7 @@ getAjax(
 )
 
 window.wx.ready(function () {
+  alert('ready')
   // alert(window.shareObj.title)
   // alert(window.config)
   // alert(window.config.title)
