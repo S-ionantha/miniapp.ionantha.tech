@@ -10,7 +10,6 @@ function getAjax(url, data, cb, spacial) {
     jsonpCallback: 'cb1',
     cache: true,
     success: function (_data) {
-      console.log(_data)
       cb(_data)
     },
     timeout: 10000,
@@ -20,7 +19,6 @@ function getAjax(url, data, cb, spacial) {
   })
 }
 window.weixinSucess = function (data) {
-  console.log('weixinSucess')
   if(!window.wx) {
     // window.wx = {}
     return
@@ -83,9 +81,12 @@ window.wx.ready(function () {
 window.isdingding_20190304 = function () {
   //判断是不是钉钉
   var ua = navigator.userAgent.toLowerCase()
+  alert(ua.indexOf('dingtalk') >= 0)
   return ua.indexOf('dingtalk') >= 0
 }
 if (isdingding_20190304()) {
+  alert(!!(window.dd))
+  alert(window.config.title)
   window.dd.ready(function () {
     dd.biz.navigation.setRight({
       show: true, //控制按钮显示， true 显示， false 隐藏， 默认true
@@ -95,10 +96,10 @@ if (isdingding_20190304()) {
         //如果control为true，则onSuccess将在发生按钮点击事件被回调
         dd.biz.util.share({
           type: 0, //分享类型，0:全部组件 默认； 1:只能分享到钉钉；2:不能分享，只有刷新按钮
-          title: window.shareObj.title, // 分享标题
-          content: window.shareObj.desc, // 分享描述
-          url: window.shareObj.url,
-          image: window.shareObj.img, // 分享图标
+          title: window.config.title, // 分享标题
+          content: window.config.desc, // 分享描述
+          url: window.config.url,
+          image: window.config.img, // 分享图标
           onSuccess: function () {},
           onFail: function (err) {},
         })
